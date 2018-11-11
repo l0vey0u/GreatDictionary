@@ -8,7 +8,7 @@ public class GreatManProfileFactory {
     Predicate<Integer> hasDetailInfo = n -> n == 2;
     public GreatManProfile createProfile(Scanner sc) {
         GreatManProfile greatManProfile = null;
-        if(hasDetailInfo.test(Integer.parseInt(sc.next()))) {
+        if(hasDetailInfo.test(sc.nextInt())) {
             greatManProfile = new FullGreatManProfile();
         }
         else {
