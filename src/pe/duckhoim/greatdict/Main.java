@@ -10,7 +10,7 @@ public class Main {
     private static final String ProfileFileName = "great-inherit-enum.txt";
     private Scanner getFileStream(String fileName)
     {
-        Scanner fileStream = null;
+        Scanner fileStream;
 
         try {
             File f = new File(fileName);

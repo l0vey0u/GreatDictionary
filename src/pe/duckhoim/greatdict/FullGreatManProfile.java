@@ -7,7 +7,7 @@ public class FullGreatManProfile extends GreatManProfile {
     private ArrayList<String> fullInfo = new ArrayList<>();
 
     public void readAchieve(Scanner sc) {
-        String l = null;
+        String l;
         sc.nextLine();
         while(!(l = sc.nextLine()).isEmpty()) {
             fullInfo.add(l);
