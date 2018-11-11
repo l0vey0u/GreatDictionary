@@ -14,7 +14,7 @@ public class Main {
 
         try {
             File f = new File(fileName);
-            fileStream = new Scanner(f, "Cp949");
+            fileStream = new Scanner(f, "UTF8");
         } catch(FileNotFoundException e) {
             throw new RuntimeException(e);
         }
