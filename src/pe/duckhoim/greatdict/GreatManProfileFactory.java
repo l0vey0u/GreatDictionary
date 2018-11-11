@@ -1,15 +1,17 @@
 package pe.duckhoim.greatdict;
 
-
 import java.util.Scanner;
-import java.util.function.Predicate;
 
 public class GreatManProfileFactory {
-    Predicate<Integer> hasDetailInfo = n -> n == 2;
+    private Scanner sc;
 
-    public GreatManProfile createProfile(Scanner sc) {
+    public GreatManProfileFactory(Scanner sc) {
+        this.sc = sc;
+    }
+
+    public GreatManProfile createProfile() {
         GreatManProfile greatManProfile;
-        if (hasDetailInfo.test(sc.nextInt())) {
+        if (sc.nextInt() == 2) {
             greatManProfile = new FullGreatManProfile();
         } else {
             greatManProfile = new SimpleGreatManProfile();
@@ -18,5 +20,31 @@ public class GreatManProfileFactory {
 
         greatManProfile.readAchieve(sc);
         return greatManProfile;
+    }
+
+    public GreatManProfile createProfile(String name) {
+        GreatManProfile greatManProfile = new SimpleGreatManProfile();
+        greatManProfile.setProfile(name, sc);
+        System.out.print("업적 : ");
+        greatManProfile.readAchieve(sc);
+        return greatManProfile;
+    }
+
+    public void editProfile(GreatManProfile profile) {
+        int sel;
+        while (true) {
+            System.out.println("수정할 카테고리 선택");
+            System.out.println("(0) 이름 (1) 직업 (2) 성별 (3) 시대");
+            System.out.println("(5) 더이상 수정할 내용 없음");
+            System.out.print(">> ");
+            sel = sc.nextInt();
+            if (sel == 5) {
+                sc.nextLine();
+                break;
+            }
+            profile.edit(SearchEntity.Category.values()[sel], sc);
+            profile.print();
+            System.out.println();
+        }
     }
 }

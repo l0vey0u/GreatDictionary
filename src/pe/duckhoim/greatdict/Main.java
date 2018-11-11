@@ -8,5 +8,6 @@ public class Main {
         ProfileSearchEngine searchEngine = new ProfileSearchEngine();
         searchEngine.setProfileController(profileCont);
         searchEngine.run();
+        profileCont.addProfile();
     }
 }

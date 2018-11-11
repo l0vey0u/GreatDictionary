@@ -19,6 +19,28 @@ public abstract class GreatManProfile {
         this.dth = sc.nextInt();
     }
 
+    public void setProfile(String name, Scanner sc) {
+        this.name = name;
+        System.out.print("성별 ( 남: M / 여 : F ) : ");
+        this.gender = sc.nextLine();
+        System.out.println("시대 선택");
+        System.out.println("(0) 없음 (1) 고조선 (2) 삼국");
+        System.out.println("(3) 남북국 (4) 고려 (5) 조선");
+        System.out.println("(6) 식민지 (7) 대한민국 (8) 후삼국");
+        System.out.print(">> ");
+        this.age = KrAge.values()[sc.nextInt()].getAgeName();
+        System.out.println("직업 선택");
+        System.out.println("(0) 기타 (1) 왕 (2) 무인 (3) 정치가");
+        System.out.println("(4) 예술가 (5) 의사 (6) 종교인");
+        System.out.print(">> ");
+        this.job = Job.values()[sc.nextInt()].getJobName();
+        System.out.print("생년 사망년 >> ");
+        this.bth = sc.nextInt();
+        this.dth = sc.nextInt();
+        sc.nextLine();
+
+    }
+
     public void printProfile() {
         System.out.format("%s %s %s %s ", name, job, gender, age);
         if (bth < 0)
@@ -85,6 +107,29 @@ public abstract class GreatManProfile {
                 return true;
         }
         return false;
+    }
+
+    public void edit(SearchEntity.Category category, Scanner sc) {
+        if (category == SearchEntity.Category.Name) {
+            System.out.print("이름 수정 : ");
+            this.name = sc.nextLine();
+        } else if (category == SearchEntity.Category.Job) {
+            System.out.println("직업 수정");
+            System.out.println("(0) 기타 (1) 왕 (2) 무인 (3) 정치가");
+            System.out.println("(4) 예술가 (5) 의사 (6) 종교인");
+            System.out.print(">> ");
+            this.job = Job.values()[sc.nextInt()].getJobName();
+        } else if (category == SearchEntity.Category.Gender) {
+            System.out.print("성별 ( 남: M / 여 : F ) : ");
+            this.gender = sc.nextLine();
+        } else if (category == SearchEntity.Category.Age) {
+            System.out.println("시대 선택");
+            System.out.println("(0) 없음 (1) 고조선 (2) 삼국");
+            System.out.println("(3) 남북국 (4) 고려 (5) 조선");
+            System.out.println("(6) 식민지 (7) 대한민국 (8) 후삼국");
+            System.out.print(">> ");
+            this.age = KrAge.values()[sc.nextInt()].getAgeName();
+        }
     }
 
     public String getName() {
