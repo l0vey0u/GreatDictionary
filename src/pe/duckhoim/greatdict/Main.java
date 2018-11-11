@@ -14,7 +14,7 @@ public class Main {
 
         try {
             File f = new File(fileName);
-            fileStream = new Scanner(f);
+            fileStream = new Scanner(f, "Cp949");
         } catch(FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -30,6 +30,7 @@ public class Main {
             greatManProfile = gmpf.createProfile(dataStream);
             greatManProfileList.add(greatManProfile);
         }
+        dataStream.close();
     }
     public void printList() {
         for(GreatManProfile gmp:greatManProfileList)

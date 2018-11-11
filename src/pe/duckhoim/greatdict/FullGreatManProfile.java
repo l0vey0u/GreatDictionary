@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FullGreatManProfile extends GreatManProfile {
-    private ArrayList<String> fullInfo;
+    private ArrayList<String> fullInfo = new ArrayList<>();
 
     public void readAchieve(Scanner sc) {
         String l = null;
+        sc.nextLine();
         while(!(l = sc.nextLine()).isEmpty()) {
             fullInfo.add(l);
         }
